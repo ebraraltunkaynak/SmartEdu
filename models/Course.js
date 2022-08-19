@@ -22,7 +22,12 @@ const CourseSchema = new Schema({
     unique:true,
 
 
+  },
+  category:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Category',
   }
+
 });
 
 CourseSchema.pre('validate',function(next){

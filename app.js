@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const pageRoute= require('./routes/pageRoute');
 const courseRoute=require('./routes/courseRoute')
+const session =require('express-session')
 const categoryRoute=require('./routes/categoryRoute')
 const userRoute= require('./routes/userRoute')
 const app = express();
@@ -21,7 +22,11 @@ app.set("view engine","ejs");
 app.use(express.static('public'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
+app.use(session({
+  secret: 'my_keyboard_dog',
+  resave: false,
+  saveUninitialized: true
+}))
 //routes
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);

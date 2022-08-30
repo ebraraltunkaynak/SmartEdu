@@ -54,8 +54,8 @@ const outputMessage= `
 
 // send mail with defined transport object
 let info = await transporter.sendMail({
-  from: '"SmartEdu Contact" <ebraraltunkynk@gmail.com>', // sender address
-  to: "16155052@mersin.edu.tr" , // list of receivers
+  from: '"SmartEdu Contact" <@gmail.com>', // sender address
+  to: "---" , // list of receivers
   subject: "SmartEdu Contact", // Subject line
   text: "Hello world?", // plain text body
   html:outputMessage, // html body
@@ -68,6 +68,7 @@ console.log("Message sent: %s", info.messageId);
 console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
+req.flash("Success","We Recevied Your Message succesfully");
 
  res.status(200).redirect('contact');
 

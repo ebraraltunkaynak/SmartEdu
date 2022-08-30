@@ -31,6 +31,9 @@ exports.getContactPage = (req, res) => {
 
 exports.sendEmail = async (req, res) => {
  
+  try{
+
+  
 const outputMessage= `
  <h1> Mail Details</h1>
  <ul>
@@ -71,5 +74,9 @@ console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 req.flash("Success","We Recevied Your Message succesfully");
 
  res.status(200).redirect('contact');
+} catch(err) {
+  req.flash("error",`somethings wrong ` );
+  res.status(200).redirect('contact');
+}
 
 };
